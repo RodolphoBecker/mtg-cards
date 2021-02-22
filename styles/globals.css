@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.main-title {
+  color: rgb(90, 162, 204);
+  font-weight: bold;
+  text-transform: uppercase;
+}

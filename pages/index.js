@@ -1,65 +1,59 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Head from 'next/head'
+import React, {useState} from 'react'
+import axios from 'axios'
+import SpinnerLoading from '../components/SpinnerLoading'
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+const Home = () => {
+	const[cardName, setCardName] = useState('');
+	const[loading, setLoading] = useState(false);
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+	const baseUrl = 'https://api.scryfall.com'
+	const cardSearchUrl = `https://api.scryfall.com/cards/named?fuzzy=${cardName}`
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+	const searchApi = async (event) => {
+		event.preventDefault();
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+		const response = await axios.get(cardSearchUrl, {
+			params: {
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+			}
+		});
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+		setCardName('');
+		
+		console.log(response.data);
+	}
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+	return(
+		<React.Fragment>
+			<Head>
+				<title>MTG Card Search</title>
+				<link rel="icon" href="/favicon.ico" />
+				<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"></link>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"/>
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></link>
+			</Head>
+			<section className={styles.searchForm}>
+				<div className="container">
+					<div className="row">
+						<div className="col-12 col-lg-12 mt-5" style={{ textAlign: 'center' }}>
+							<h1 className="main-title">MTG - CARD SEARCH</h1>
+						</div>
+						<div className="col-12 col-lg-12 mt-5" style={{ textAlign: 'center' }}>
+							<form className={`${styles.form}`} onSubmit={() => searchApi(event)}>
+								<input className={styles.input} value={cardName} onChange={(event) => setCardName(event.target.value)} type="text" placeholder="Card Name..."></input>
+								<button className={styles.button} onClick={() => searchApi(event)}>Search</button>
+							</form>
+						</div> 
+					</div>
+				</div>
+			</section>
+			<section>
+				<SpinnerLoading />
+			</section>
+		</React.Fragment>
+	);	
 }
+
+export default Home
