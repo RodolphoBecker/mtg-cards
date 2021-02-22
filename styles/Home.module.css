@@ -1,8 +1,7 @@
  /* @import "~bootstrap/scss/bootstrap"; */
 
  .searchForm {
-	height: 100vh;
-	background-color: beige;
+	background-color: #fff;
 }
 .form {
 	display: flex;
@@ -13,6 +12,8 @@
 	padding: 5px;
 	transition: all ease .5s;
 	border: 1px solid rgb(90, 162, 204) ;
+	margin-bottom: 0;
+    border-bottom: 1px solid #5aa2cc;
 }
 .input:focus{
 	transition: all ease .5s;
@@ -33,4 +34,40 @@
 	color: #fff;
 	border: 1px solid #fff;
 
+}
+.descriptionTitle, .descriptionText {
+	text-align: center;
+	width: 100%;
+}
+.flavorText {
+	width: 100%;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+}
+.cardDescription {
+	margin-top: 100px;
+}
+.facts {
+	background-color: rgb(104, 149, 177);
+	padding: 50px;
+	border-radius: 20px;
+}
+.factsFields{
+	display: flex;
+	align-items: flex-end;
+}
+.factsFields h3, .factsFields p {
+	margin-bottom: 0;
+}
+.list ul {
+	flex-wrap: wrap;
+    justify-content: space-between;
+}
+.list li p {
+	margin-left: 15px;
+}
+.list li {
+	flex-basis: 40%;
+	margin-bottom: 20px;
 }

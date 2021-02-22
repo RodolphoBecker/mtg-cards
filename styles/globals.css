@@ -20,3 +20,9 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
+.main-text {
+  font-size: 1.2rem;
+}
+.text-white {
+  color: #fff !important;
+}

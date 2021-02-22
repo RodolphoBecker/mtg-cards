@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css'
 import Head from 'next/head'
+import Image from 'next/image'
 import React, {useState} from 'react'
 import axios from 'axios'
 import SpinnerLoading from '../components/SpinnerLoading'
@@ -7,6 +8,7 @@ import SpinnerLoading from '../components/SpinnerLoading'
 const Home = () => {
 	const[cardName, setCardName] = useState('');
 	const[loading, setLoading] = useState(false);
+	const[cardData, setCardData] = useState([]);
 
 	const baseUrl = 'https://api.scryfall.com'
 	const cardSearchUrl = `https://api.scryfall.com/cards/named?fuzzy=${cardName}`
@@ -21,8 +23,9 @@ const Home = () => {
 		});
 
 		setCardName('');
-		
-		console.log(response.data);
+		setLoading(true)
+		setCardData(response.data);
+		console.log(response.data)
 	}
 
 	return(
@@ -49,9 +52,64 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
-			<section>
-				<SpinnerLoading />
+			{loading === false ? 
+			<section className="mt-5">
+				<div className="container">
+					<div className="row">
+						<div className="col-12 col-lg-12 d-flex" style={{ justifyContent: "center" }}>
+							<Image
+								src="/image-placeholder-back.jpg"
+								alt="CardPlaceholder"
+								height={349}
+								width={250}
+							/>
+						</div>
+					</div>
+				</div>
 			</section>
+			:
+			<section className={styles.cardDescription}>
+				<div className="container">
+					<div className="row">
+						<div className="col-12 col-lg-12 d-flex flex-wrap" style={{ justifyContent: "center" }}>
+							<h2 className={styles.descriptionTitle}>{cardData.name}</h2>
+							<Image
+								src="/image-placeholder-back.jpg"
+								alt={cardData.name}
+								height={349}
+								width={250}
+							/>
+							<p className={styles.descriptionText}>Artist: {cardData.artist}</p>
+							<p className={styles.flavorText}>{cardData.flavor_text}</p>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-12 col-lg-12">
+							<div className={styles.facts}>
+								<ul className={`${styles.list} d-flex`}>
+									<li className={styles.factsFields}>
+										<h3 className="text-white">Rarity: </h3>
+										<p className="text-white main-text">{cardData.rarity}</p>
+									</li>
+									<li className={styles.factsFields}>
+										<h3 className="text-white">Type: </h3>
+										<p className="text-white main-text">{cardData.type_line}</p>
+									</li>
+									<li className={styles.factsFields}>
+										<h3 className="text-white">First Set: </h3>
+										<p className="text-white main-text">{cardData.set_name}</p>
+									</li>
+									<li className={styles.factsFields}>
+										<h3 className="text-white">Released Date: </h3>
+										<p className="text-white main-text">{cardData.released_at}</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			}
 		</React.Fragment>
 	);	
 }
