@@ -1,39 +1,39 @@
  /* @import "~bootstrap/scss/bootstrap"; */
 
+ $lightBlueBack: rgb(90, 162, 204);
  .searchForm {
 	background-color: #fff;
 }
 .form {
 	display: flex;
 	justify-content: space-between;
-}
-.input {
-	flex-basis: 80%;
-	padding: 5px;
-	transition: all ease .5s;
-	border: 1px solid rgb(90, 162, 204) ;
-	margin-bottom: 0;
-    border-bottom: 1px solid #5aa2cc;
-}
-.input:focus{
-	transition: all ease .5s;
-	border: 1px solid rgb(26, 48, 61);
+	.input {
+		flex-basis: 80%;
+		padding: 5px;
+		transition: all ease .5s;
+		border: 1px solid $lightBlueBack ;
+		margin-bottom: 0;
+		border-bottom: 1px solid #5aa2cc;
+		&:focus {
+			transition: all ease .5s;
+			border: 1px solid rgb(26, 48, 61);
+		}
+	}
 }
 .button {
 	flex-basis: 15%;
-	border: 1px solid rgb(90, 162, 204);
+	border: 1px solid $lightBlueBack;
 	background-color: #fff;
 	text-transform: uppercase;
 	font-weight: bold;
 	color: rgb(90, 162, 204);
 	transition: all ease .5s;
-}
-.button:hover{
-	transition: all ease .5s;
-	background-color: rgb(90, 162, 204);
-	color: #fff;
-	border: 1px solid #fff;
-
+	&:hover {
+		transition: all ease .5s;
+		background-color: $lightBlueBack;
+		color: #fff;
+		border: 1px solid #fff;
+	}
 }
 .descriptionTitle, .descriptionText {
 	text-align: center;
@@ -60,7 +60,7 @@
 .factsFields h3, .factsFields p {
 	margin-bottom: 0;
 }
-.list ul {
+.list {
 	flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -69,5 +69,5 @@
 }
 .list li {
 	flex-basis: 40%;
-	margin-bottom: 20px;
+	margin: 15px 0;
 }

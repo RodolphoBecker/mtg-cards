@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import Head from 'next/head'
 import Image from 'next/image'
 import React, {useState} from 'react'
@@ -29,7 +29,7 @@ const Home = () => {
 	}
 
 	return(
-		<React.Fragment>
+		<>
 			<Head>
 				<title>MTG Card Search</title>
 				<link rel="icon" href="/favicon.ico" />
@@ -57,12 +57,7 @@ const Home = () => {
 				<div className="container">
 					<div className="row">
 						<div className="col-12 col-lg-12 d-flex" style={{ justifyContent: "center" }}>
-							<Image
-								src="/image-placeholder-back.jpg"
-								alt="CardPlaceholder"
-								height={349}
-								width={250}
-							/>
+							<SpinnerLoading />
 						</div>
 					</div>
 				</div>
@@ -110,7 +105,7 @@ const Home = () => {
 				</div>
 			</section>
 			}
-		</React.Fragment>
+		</>
 	);	
 }
 
