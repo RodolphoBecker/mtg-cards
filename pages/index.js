@@ -1,10 +1,11 @@
 import styles from '../styles/Home.module.scss'
 import Head from 'next/head'
-import Image from 'next/image'
 import React, {useState} from 'react'
-import SpinnerLoading from '../components/SpinnerLoading'
 import { Container, Row } from 'react-bootstrap'
+import SpinnerLoading from '../components/SpinnerLoading'
 import CardSearch from '../components/CardSearch'
+import CardDescription from '../components/CardDescription'
+import CardDetail from '../components/CardDetail'
 
 const Home = () => {
 	const[cardData, setCardData] = useState([]);
@@ -25,12 +26,12 @@ const Home = () => {
 							<h1 className="main-title">MTG - CARD SEARCH</h1>
 						</div>
 						<div className="col-12 col-lg-12 mt-5" style={{ textAlign: 'center' }}>
-							<CardSearch cardData={setCardData} />
+							<CardSearch cardData={setCardData} loading={setLoading} />
 						</div> 
 					</Row>
 				</Container> 
 			</section>
-			{loading === false ? 
+			{loading ? 
 			<section className="mt-5">
 				<Container>
 					<Row>
@@ -45,39 +46,12 @@ const Home = () => {
 				<Container>
 					<Row>
 						<div className="col-12 col-lg-12 d-flex flex-wrap" style={{ justifyContent: "center" }}>
-							<h2 className={styles.descriptionTitle}>{cardData.name}</h2>
-							<Image
-								src="/image-placeholder-back.jpg"
-								alt={cardData.name}
-								height={349}
-								width={250}
-							/>
-							<p className={styles.descriptionText}>Artist: {cardData.artist}</p>
-							<p className={styles.flavorText}>{cardData.flavor_text}</p>
+							<CardDetail cardData={cardData} />
 						</div>
 					</Row>
 					<Row>
 						<div className="col-12 col-lg-12">
-							<div className={styles.facts}>
-								<ul className={`${styles.list} d-flex`}>
-									<li className={styles.factsFields}>
-										<h3 className="text-white">Rarity: </h3>
-										<p className="text-white main-text">{cardData.rarity}</p>
-									</li>
-									<li className={styles.factsFields}>
-										<h3 className="text-white">Type: </h3>
-										<p className="text-white main-text">{cardData.type_line}</p>
-									</li>
-									<li className={styles.factsFields}>
-										<h3 className="text-white">First Set: </h3>
-										<p className="text-white main-text">{cardData.set_name}</p>
-									</li>
-									<li className={styles.factsFields}>
-										<h3 className="text-white">Released Date: </h3>
-										<p className="text-white main-text">{cardData.released_at}</p>
-									</li>
-								</ul>
-							</div>
+							<CardDescription cardData={cardData} />
 						</div>
 					</Row>
 				</Container>

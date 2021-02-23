@@ -18,6 +18,7 @@ const CardSearch = (props) => {
 
 		setCardName('');
 		props.cardData(response.data);
+		props.loading(false);
 	}
 
 	return(

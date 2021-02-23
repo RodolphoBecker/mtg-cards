@@ -3,39 +3,6 @@ $lightBlueBack: rgb(90, 162, 204);
 .searchForm {
 	background-color: #fff;
 }
-.descriptionTitle, .descriptionText {
-	text-align: center;
-	width: 100%;
-}
-.flavorText {
-	width: 100%;
-	text-align: center;
-	font-style: italic;
-	font-weight: bold;
-}
 .cardDescription {
 	margin-top: 100px;
-}
-.facts {
-	background-color: rgb(104, 149, 177);
-	padding: 50px;
-	border-radius: 20px;
-}
-.factsFields{
-	display: flex;
-	align-items: flex-end;
-}
-.factsFields h3, .factsFields p {
-	margin-bottom: 0;
-}
-.list {
-	flex-wrap: wrap;
-    justify-content: space-between;
-}
-.list li p {
-	margin-left: 15px;
-}
-.list li {
-	flex-basis: 40%;
-	margin: 15px 0;
 }
