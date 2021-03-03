@@ -1,0 +1,34 @@
+$lightBlueBack: rgb(90, 162, 204);
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.descriptionTitle {
+	text-align: center;
+	width: 100%;
+	font-size: 1.5rem;
+	transition: all ease .5s;
+	text-decoration: none !important;
+		img {
+			transition: all ease .5s;
+		}
+		&:hover{
+			transition: all ease .5s;
+			color: $lightBlueBack !important;
+		}
+		&:hover img {
+			opacity: .7;
+			transform: scale(.95);
+			transition: all ease .5s;
+		}
+}
+.flavorText {
+	width: 100%;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+}

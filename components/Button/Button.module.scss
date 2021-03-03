@@ -1,0 +1,45 @@
+$lightBlue: rgb(90, 162, 204);
+$lightRed: rgb(190, 63, 63);
+$lightPurple: #242031;
+
+.default {
+    padding: 5px;
+    border: 1px solid rgb(90, 162, 204);
+    color: #fff;
+    margin: 15px 0;
+    transition: all ease .5s;
+}
+
+.blue {
+    background-color: $lightBlue;
+    &:hover{
+        transition: all ease .5s;
+        background-color: $lightPurple;
+        border: 1px solid $lightBlue;
+    }
+}
+.red {
+    background-color: $lightRed;
+    &:hover{
+        transition: all ease .5s;
+        background-color: $lightPurple;
+        border: 1px solid $lightRed;
+    }
+}
+.purple {
+    background-color: $lightPurple;
+    &:hover{
+        transition: all ease .5s;
+        background-color: $lightBlue;
+        border: 1px solid $lightPurple;
+    }
+}
+.s {
+    width: 10%;
+}
+.m {
+    width: 20%;
+}
+.l {
+    width: 30%;
+}

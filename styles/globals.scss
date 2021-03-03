@@ -24,5 +24,13 @@ a {
   font-size: 1.2rem;
 }
 .text-white {
-  color: #fff !important;
+  color: #FDFDFD !important;
+}
+.mainBackground {
+  background: -webkit-gradient(linear, left top, left bottom, from(#1d1c25), to(#431e3f));
+  background: -webkit-linear-gradient(top, #1d1c25, #431e3f);
+  background: -o-linear-gradient(top, #1d1c25, #431e3f);
+  background: linear-gradient(to bottom, #1d1c25, #431e3f);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
